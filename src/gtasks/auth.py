@@ -25,7 +25,7 @@ def get_credentials():
                 "credentials.json", 
                 SCOPES,
             )
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_console()
 
         # Save the credentials for the next run
         with open("token.json", "w") as token:
