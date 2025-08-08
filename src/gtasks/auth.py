@@ -24,18 +24,17 @@ def get_credentials():
             flow = InstalledAppFlow.from_client_secrets_file(
                 "credentials.json", 
                 SCOPES,
-                # This is crucial for the manual flow
-                redirect_uri='urn:ietf:wg:oauth:2.0:oob'
+                redirect_uri='http://localhost'
             )
-
-            auth_url, _ = flow.authorization_url(prompt='consent')
+            
+            auth_url, _ = flow.authorization_url(prompt='consent', state='gtasks-fixed-state-for-testing')
 
             click.echo('Please go to this URL to authorize access:')
             click.echo(auth_url)
 
-            code = click.prompt('Enter the authorization code')
+            redirect_url = click.prompt('Paste the full redirect URL here')
             
-            flow.fetch_token(code=code)
+            flow.fetch_token(authorization_response=redirect_url)
             creds = flow.credentials
 
         # Save the credentials for the next run
