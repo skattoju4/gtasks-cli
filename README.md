@@ -15,7 +15,7 @@ This is the default and recommended method. The tool will automatically:
 
 ### Carbonyl Flow (`--auth-flow carbonyl`)
 
-This method specifically uses the `carbonyl` CLI browser. You must have `carbonyl` installed for this to work. You can install it from [carbonyl.sh](https://carbonyl.sh).
+This method specifically uses the `carbonyl` CLI browser. You must have `carbonyl` installed for this to work. You can install it with `npm install -g carbonyl`. Please note that `carbonyl` is not supported on all platforms, for example, Android is not supported.
 
 ### Manual Flow (`--auth-flow manual`)
 
