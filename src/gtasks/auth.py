@@ -25,7 +25,7 @@ def get_credentials():
                 "credentials.json", 
                 SCOPES,
                 # This is crucial for the manual flow
-                redirect_uri='urn:ietf:wg:oauth:2.0:oob'
+                # redirect_uri='urn:ietf:wg:oauth:2.0:oob'
             )
 
             auth_url, _ = flow.authorization_url(prompt='consent')
