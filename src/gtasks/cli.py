@@ -6,15 +6,24 @@ from .auth import get_tasks_service
 
 
 @click.group()
-def main():
+@click.option(
+    "--auth-flow",
+    type=click.Choice(["auto", "carbonyl", "manual"], case_sensitive=False),
+    default="auto",
+    help="The authentication flow to use.",
+)
+@click.pass_context
+def main(ctx, auth_flow):
     """A CLI for managing your Google Tasks."""
-    pass
+    ctx.ensure_object(dict)
+    ctx.obj["auth_flow"] = auth_flow
 
 
 @main.command()
-def list():
+@click.pass_context
+def list(ctx):
     """Lists your task lists."""
-    service = get_tasks_service()
+    service = get_tasks_service(ctx.obj["auth_flow"])
 
     # Call the Tasks API
     results = service.tasklists().list(maxResults=10).execute()
