@@ -23,10 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Carbonyl
-      run: |
-        bash <(curl -sL https://carbonyl.sh)
-
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
